@@ -53,20 +53,22 @@ export default function RenderComments({ comments, replies, commentService }) {
       return view
     }
 
-    const view = !comment.isDeleted ? (
+    const view = (
       <div
         className={classNames('comment', { 'is-reply': forReply }, comment.id)}
         key={comment.id}
         data-test-id={`${comment.id}${forReply ? '-' + comment.parentId : ''}`}
       >
-        <div className='text-box'>
-          <p className='text'>{comment.comment}</p>
-          <CommentActions commentId={comment.id} parentId={comment.parentId} commentService={commentService} />
-        </div>
+        {!comment.isDeleted ? (
+          <div className='text-box'>
+            <p className='text'>{comment.comment}</p>
+            <CommentActions commentId={comment.id} parentId={comment.parentId} commentService={commentService} />
+          </div>
+        ) : <div className='comment deleted' key={comment.id}>Comment deleted...</div>}
 
         {comment.hasReplies && renderReplies()}
       </div>
-    ) : <div className='comment deleted' key={comment.id}>Comment deleted...</div>
+    )
 
     // if there is no parent for this comment, then just add it to UI list, as this is the base comment
     if (!comment.parentId && !forReply) {

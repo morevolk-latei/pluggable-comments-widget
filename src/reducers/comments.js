@@ -5,7 +5,13 @@ import { getId } from "../utils/common";
 
 // here object id is prefixed by _ cuz in browser objects with numeric keys will be sorted
 // automatically in increasing order, so to prevent that behaviour
-// keeping keys as string
+
+/**
+ * It is important to understand the reason for choosing this datastructure for storing comemnts and replies.
+ * comments genrally has tree-like representation i.e one comment can have many replies (which are also a comments)
+ *  
+ * Read in constant time and write
+ */
 const comments = {
   '_123': {
     id: 123,
