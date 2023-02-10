@@ -1,6 +1,6 @@
 {
   "name": "comment-widget",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -34,5 +34,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.0"
   }
 }

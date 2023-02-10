@@ -1,0 +1,144 @@
+:root {
+  --color-1: #150745;
+  --color-1-dark: #0a012a;
+}
+
+header {
+  height: 75px;
+  background-color: var(--color-1);
+  color: #fffe;
+
+  & .title {
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 24px;
+    font-family: sans-serif;
+  }
+
+  & .creator.subscript {
+    text-align: right;
+    padding: 0 20px;
+    font-size: 0.8rem;
+    font-family: system-ui, sans-serif;
+  }
+}
+
+.App {
+  height: 100%;
+}
+
+.loader {
+  height: calc(100% - 70px);
+  width: 100%;
+  position: fixed;
+  backdrop-filter: blur(5px);
+  z-index: 999;
+
+  & .door {
+    background-color: var(--color-1);
+    position: relative;
+    transition: transform 400ms ease;
+
+    & img.door-handle {
+      position: absolute;
+      top: 31%;
+      // transform: translateY(-72%);
+      width: 80px;
+    }
+
+    & img.door-knob {
+      position: absolute;
+      top: 63%;
+      width: 65px;
+      right: 18px;
+      transform: scaleX(-1);
+    }
+  }
+
+  & .left-door {
+    flex: 1;
+    // border-right: 40px solid var(--color-1-dark);
+    border-right-style: groove;
+
+    background: url(assets/img/door-left.png) center center no-repeat;
+    background-size: 140% 122%;
+
+    & .loading-text {
+      position: absolute;
+      top: 41%;
+      right: -109px;
+      z-index: 1;
+      color: #fff;
+      text-shadow: 0px 0px 15px #000a;
+      font-size: 1.5rem;
+
+      & .highlight {
+        display: inline-block;
+        position: absolute;
+        z-index: -1;
+        border-radius: 1em 0 1em 0;
+        height: 40px;
+        width: 0%;
+        animation: loader-highlight 3s cubic-bezier(0.165, 0.84, 0.44, 1) 500ms forwards;
+        left: -20px;
+        top: -3px;
+        background-image: linear-gradient(-100deg,
+            rgba(0, 20, 255, 0.2),
+            rgba(0, 20, 255, 0.7) 95%,
+            rgba(0, 20, 255, 0.1));
+      }
+    }
+
+    & img.door-handle {
+      right: 52px;
+    }
+  }
+
+  & .right-door {
+    flex: 1;
+    // border-left: 40px solid var(--color-1-dark);
+    // border-left-style: ridge;
+
+    background: url(assets/img/door-left.png) center center no-repeat;
+    background-size: 140% 122%;
+    transform: scaleX(-1);
+
+    & img.door-handle {
+      left: 52px;
+    }
+  }
+
+  &.animate {
+    animation: loading-animation 100ms ease 400ms forwards;
+
+    & .left-door {
+      transform: translateX(-150%);
+    }
+
+    & .right-door {
+      transform: scaleX(-1) translateX(-120%);
+    }
+  }
+
+  @keyframes loading-animation {
+    0% {
+      opacity: 1;
+    }
+
+
+    99% {
+      opacity: 0;
+    }
+
+    100% {
+      top: -100%;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes loader-highlight {
+    100% {
+      width: 265px;
+    }
+  }
+}
