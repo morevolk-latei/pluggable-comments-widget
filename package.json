@@ -1,5 +1,6 @@
 {
   "name": "comment-widget",
+  "author": "rizulsharma.info@gmail.com <Rizul Sharma>",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
